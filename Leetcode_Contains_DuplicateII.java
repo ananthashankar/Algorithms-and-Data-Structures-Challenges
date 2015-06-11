@@ -8,33 +8,29 @@ import java.util.regex.*;
 public class Solution {
 
 public static boolean containsNearbyDuplicate(int[] nums, int k) {
-        boolean flag = false;
-        if(nums.length == 0 || k == 0){
-        	return flag;
-        }
-        Map<Integer, ArrayList<Integer>> temp = new HashMap<>();
-        for(int i = 0; i < nums.length; i++){
-        	if(temp.containsKey(nums[i])){
-        		for(int j : temp.get(nums[i])){
-        			if(i - j <= k ){
-        				flag=true;
-        				break;
-        			}
-        		}
-        		ArrayList<Integer> tmp = temp.get(nums[i]);
-        		tmp.add(i);
-        		temp.put(nums[i], tmp);
-        	} else {
-        		ArrayList<Integer> tmp = new ArrayList<Integer>();
-        		tmp.add(i);
-        		temp.put(nums[i], tmp);
-        	}
-        	
-        }
-        
-        
-        return flag;
+	boolean flag = false;
+    if(nums.length == 0 || k == 0){
+    	return flag;
     }
+    Map<Integer, Integer> temp = new HashMap<>();
+    for(int i = 0; i < nums.length; i++){
+    	if(temp.containsKey(nums[i])){
+    		if(i - temp.get(nums[i]) <= k){
+    		   flag = true;
+    		   break;
+    		}
+    		temp.put(nums[i], i);
+    	} else {
+    		
+    		temp.put(nums[i], i);
+    	}
+    	
+    }
+    
+    
+    return flag;
+}
+    
 
 	    public static void main(String[] args) {
 	        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */

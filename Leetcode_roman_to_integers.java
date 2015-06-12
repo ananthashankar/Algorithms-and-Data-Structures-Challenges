@@ -24,75 +24,34 @@ import java.util.regex.*;
 public class Solution {
 
 	 public static int romanToInt(String s) {
-	        
+		 if(s.length() == 0){
+			 return 0;
+		 }
+		 Map<Character, Integer> roman_num = new HashMap<>();
+		 roman_num.put('A', 0);
+		 roman_num.put('I', 1);
+		 roman_num.put('V', 5);
+		 roman_num.put('X', 10);
+		 roman_num.put('L', 50);
+		 roman_num.put('C', 100);
+		 roman_num.put('D', 500);
+		 roman_num.put('M', 1000);
 		 if(s.length() == 0){
 			 return 0;
 		 }
 		 int temp = 0;
 		 char prev = 'A';
 		 for(int i = 0; i < s.length(); i++){
-			 char next = 'W';
-			 if(i <= s.length() - 2){
-				 next = s.charAt(i+1);
+			 int a = roman_num.get(prev);
+			 int b = roman_num.get(s.charAt(i));
+			 if(a < b){
+				 temp += (b - 2*a);
+				 prev = s.charAt(i);
+				 continue;
 			 }
-			 if(s.charAt(i) == 'M'){
-				 if(prev == 'C'){
-					 continue;
-				 }
-				 temp += 1000;
-			 } else if(s.charAt(i) == 'C'){
-				 if(prev == 'X'){
-					 continue;
-				 } else if(next == 'M'){
-					 prev = 'C';
-					 temp += 900;
-				 } else if(next == 'D'){
-					 prev = 'C';
-					 temp += 400;
-				 } else {
-					 temp += 100;
-				 }
-			 } else if(s.charAt(i) == 'D'){
-				 if(prev == 'C'){
-					 continue;
-				 }
-				 temp += 500;
-			 } else if(s.charAt(i) == 'X'){
-				 if(prev == 'I'){
-					 continue;
-				 } else if(next == 'C'){
-					 prev = 'X';
-					 temp += 90;
-				 } else if(next == 'L'){
-					 prev = 'X';
-					 temp += 40;
-				 } else {
-					 temp += 10;
-				 }
-			 } else if(s.charAt(i) == 'L'){
-				 if(prev == 'X'){
-					 continue;
-				 }
-				 temp += 50;
-			 } else if(s.charAt(i) == 'V'){
-				 if(prev == 'I'){
-					 continue;
-				 } else 
-				 temp += 5;
-			 } else if(s.charAt(i) == 'I'){
-				 if(next == 'X'){
-					 prev = 'I';
-					 temp += 9;
-				 } else if(next == 'V'){
-					 prev = 'I';
-					 temp += 4;
-				 } else {
-					 temp += 1;
-				 }
-			 }
-		 }
-		 
-		 
+			 temp += b;
+			 prev = s.charAt(i);
+		}
 		 return temp;
 	 }
     

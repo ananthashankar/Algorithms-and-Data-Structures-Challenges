@@ -41,13 +41,25 @@ public class Solution {
     
     public static void main(String[] args) throws IOException {
         /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
-        BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
-        String line;
-        String res = "";
+        /*Using Buffer for Dynamic Input*/
+        /*	BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
+         String line;
+         String res = "";
+         
+         while ((line = stdin.readLine()) != null && line.length()!= 0) {
+         res += printLongestWord(line) + "\n";
+         } */
         
-        while ((line = stdin.readLine()) != null && line.length()!= 0) {
-            res += printLongestWord(line) + "\n";
+        /* Scanner for Dynamic Input */
+        
+        Scanner in = new Scanner(new BufferedInputStream(System.in));
+        String res = "";
+        String i;
+        while(in.hasNextLine() &&  (i = in.nextLine()).length() != 0){
+            res += printLongestWord(i) + "\n";
+            
         }
+        
 	       System.out.println(res);
     }
     

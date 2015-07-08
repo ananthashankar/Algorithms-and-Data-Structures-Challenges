@@ -20,7 +20,6 @@ public class Solution {
                 return 0;
             }
             n = (n*10) + (x%10);
-            System.out.print(n + "\n");
             x = x/10;
         }
         
@@ -32,7 +31,6 @@ public class Solution {
     public static void main(String[] args) throws IOException {
         Scanner in = new Scanner(System.in);
         int num = Integer.parseInt(in.nextLine());
-        System.out.print(num + "\n");
         int res =  reverse(num);
         System.out.println(res);
     }

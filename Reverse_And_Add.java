@@ -1,4 +1,3 @@
-
 import java.io.*;
 import java.util.*;
 import java.text.*;
@@ -7,10 +6,23 @@ import java.util.regex.*;
 
 public class Solution {
     
-    
+    public static String reverseAndAdd(int i) {
+        
+        String str = "";
+        int cnt = -1;
+        int temp = 0;
+        while(i != temp){
+            i += temp;
+            cnt++;
+            temp = reverse(i);
+        }
+        
+        return str += cnt + " " + i;
+    }
     
     public static int reverse(int x) {
         int n = 0;
+        
         if(x==0){
             return n;
         }
@@ -26,13 +38,11 @@ public class Solution {
         
     }
     
-    
     public static void main(String[] args) throws IOException {
         Scanner in = new Scanner(System.in);
-        int num = Integer.parseInt(in.nextLine());
-        int res =  reverse(num);
+        int s = Integer.parseInt(in.nextLine());
+        String res =  reverseAndAdd(s);
         System.out.println(res);
     }
     
 }
-

@@ -9,7 +9,6 @@ import java.util.regex.*;
 public class Solution {
     
     public static int nthFibonacciNumber(int n){
-        int res = 0;
         if(n <= 0){
             return res;
         }
@@ -17,10 +16,8 @@ public class Solution {
             return 1;
         }
         //res = (int)Math.floor(( Math.pow(1.618, n) / Math.sqrt(5))); // approximate formula
-        res = (int)( (1/Math.sqrt(5)) * (Math.pow(((1 + Math.sqrt(5))/2), n) - (Math.pow(((1 - Math.sqrt(5))/2), n)))) ;
-        
-        return res;
-        
+        //res = (int)( (1/Math.sqrt(5)) * (Math.pow(((1 + Math.sqrt(5))/2), n) - (Math.pow(((1 - Math.sqrt(5))/2), n)))) ;
+        return nthFibonacciNumber(n-1) + nthFibonacciNumber(n-2);
     }
     
     

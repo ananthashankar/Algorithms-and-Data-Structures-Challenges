@@ -1,14 +1,16 @@
 import java.util.HashSet;
 import java.util.Set;
 
-public class ConvertDecimalToBinary {
+public class Solution {
 	
-	public static Double convertDecimalToBinary(Double val) {
+	public static String convertDecimalToBinary(Object val) {
 		
 		String res = convertIntToBinary(Integer.valueOf(val.toString().split("\\.")[0]));
+		if(val.toString().split("\\.").length > 1) {
 		res += "." + convertDecimalPartToString(Double.valueOf("0." + val.toString().split("\\.")[1]));
+		}
 		
-		return Double.valueOf(res);
+		return res;
 	}
 	
 	private static String convertIntToBinary(int val) {
@@ -39,6 +41,6 @@ public class ConvertDecimalToBinary {
 
 	public static void main (String args[]) {
 		System.out.println("Hello");
-		System.out.println(convertDecimalToBinary(7d));
+		System.out.println(convertDecimalToBinary(7.2));
 	}
 }
